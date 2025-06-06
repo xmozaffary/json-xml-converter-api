@@ -1,0 +1,7 @@
+### JSON till XML - direkt
+POST http://localhost:8080/api/convert/json-to-xml
+Content-Type: application/json
+
+{
+  "url": "https://jsonplaceholder.typicode.com/users"
+}
