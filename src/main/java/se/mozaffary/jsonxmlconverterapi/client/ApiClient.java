@@ -1,8 +1,6 @@
 package se.mozaffary.jsonxmlconverterapi.client;
 
 import org.springframework.stereotype.Component;
-
-import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -22,15 +20,8 @@ public class ApiClient {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             return new ApiResult(response);
 
-        }catch (IOException e){
-            System.err.println("IO Error: " + e.getMessage());
+        }catch (Exception e){
             return new ApiResult("IO-fel: " + e.getMessage());
-        }catch (InterruptedException e){
-            Thread.currentThread().interrupt();
-            System.out.println("Interrupted: " + e.getMessage());
-            return new ApiResult("Begäran avbröts: " + e.getMessage());
-        }catch (IllegalArgumentException e){
-            return new ApiResult("Ogiltig URL: " + e.getMessage());
         }
     }
 }

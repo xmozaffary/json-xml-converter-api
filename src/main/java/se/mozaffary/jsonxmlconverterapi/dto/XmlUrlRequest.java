@@ -1,6 +1,6 @@
 package se.mozaffary.jsonxmlconverterapi.dto;
 
-public class JsonUrlRequest {
+public class XmlUrlRequest {
     private String url;
 
     public String getUrl() {
