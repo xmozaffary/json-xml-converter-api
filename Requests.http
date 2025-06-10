@@ -29,6 +29,15 @@ Content-Type: application/json
   "url": "https://www.w3schools.com/xml/note.xml"
 }
 
+### Json till xml - fel länk
+POST http://localhost:8080/api/convert/fetch-json-to-xml
+Content-Type: application/json
+
+{
+  "url": ""
+}
+
+
 #######################################################
 ### XML till JSON - från json källa
 #######################################################
