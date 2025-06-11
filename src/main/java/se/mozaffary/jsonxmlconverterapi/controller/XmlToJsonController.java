@@ -43,13 +43,18 @@ public class XmlToJsonController {
                     )
             ),
             @ApiResponse(
-                    responseCode = "400",
+                    responseCode = "422",
                     description = "Felaktig XML-struktur",
                     content = @Content
             ),
             @ApiResponse(
                     responseCode = "500",
                     description = "Serverfel vid konvertering",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Request body saknas eller är ogiltig.",
                     content = @Content
             )
     })

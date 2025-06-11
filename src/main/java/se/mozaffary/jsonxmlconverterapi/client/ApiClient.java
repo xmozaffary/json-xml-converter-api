@@ -10,9 +10,9 @@ import java.net.http.HttpResponse;
 public class ApiClient {
     private final HttpClient client = HttpClient.newHttpClient();
 
-    public ApiResult fetchData(String url){
+    public ApiResult fetchData(String url) {
 
-        try{
+        try {
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(url))
                     .GET()
@@ -20,8 +20,12 @@ public class ApiClient {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             return new ApiResult(response);
 
-        }catch (Exception e){
-            return new ApiResult("IO-fel: " + e.getMessage());
+        } catch (java.net.UnknownHostException e) {
+            return new ApiResult("Kunde inte hitta servern för URL: " + url);
+        } catch (IllegalArgumentException e) {
+            return new ApiResult("Ogiltig URL: " + url);
+        } catch (Exception e) {
+            return new ApiResult("Ett IO-fel inträffade: " + (e.getMessage() != null ? e.getMessage() : e.getClass().getSimpleName()));
         }
     }
 }

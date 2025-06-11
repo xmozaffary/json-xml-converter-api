@@ -47,7 +47,7 @@ public class FetchXmlToJsonController {
             ),
             @ApiResponse(
                     responseCode = "400",
-                    description = "Ogiltig URL eller felaktig XML-data",
+                    description = "Request body saknas eller är ogiltig.",
                     content = @Content
             ),
             @ApiResponse(

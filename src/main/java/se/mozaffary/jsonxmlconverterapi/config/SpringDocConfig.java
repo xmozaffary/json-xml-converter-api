@@ -13,6 +13,7 @@ public class SpringDocConfig {
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
                 .addServersItem(new Server().url("http://localhost:8080"))
+                .addServersItem(new Server().url("https://my.ittt.se"))
                 .info(new Info()
                         .title("JSON-XML Converter API")
                         .version("1.0.0")

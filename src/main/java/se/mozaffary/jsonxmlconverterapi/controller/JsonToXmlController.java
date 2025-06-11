@@ -43,7 +43,12 @@ public class JsonToXmlController {
             ),
             @ApiResponse(
                     responseCode = "500",
-                    description = "Felaktig JSON-struktur",
+                    description = "Serverfel vid konvertering",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Request body saknas eller är ogiltig.",
                     content = @Content
             )
     })

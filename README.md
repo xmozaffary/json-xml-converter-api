@@ -58,6 +58,7 @@ docker run -p 8080:8080 json-xml-converter-api
 
 ## API Endpoints
 
+------------------------------
 ### POST /api/convert/json-to-xml
 
 Konverterar JSON till XML.
@@ -82,7 +83,7 @@ Konverterar JSON till XML.
     <city>Stockholm</city>
 </item>
 ```
-
+-------------------------
 ### POST /api/convert/xml-to-json
 
 Konverterar XML till JSON.
@@ -106,7 +107,7 @@ Konverterar XML till JSON.
   "city": "Stockholm"
 }
 ```
-
+-----------------------
 ### POST /api/convert/fetch-json-to-xml
 
 Hämtar JSON från en extern URL och konverterar det till XML.
@@ -118,9 +119,9 @@ Hämtar JSON från en extern URL och konverterar det till XML.
   "url": "https://jsonplaceholder.typicode.com/users"
 }
 ```
-
 **Response:** XML-representation av den hämtade JSON-datan.
 
+-----------------------------
 ### POST /api/convert/fetch-xml-to-json
 
 Hämtar XML från en extern URL och konverterar det till JSON.
@@ -135,14 +136,15 @@ Hämtar XML från en extern URL och konverterar det till JSON.
 
 **Response:** JSON-representation av den hämtade XML-datan.
 
-    - Bra för att testa stora datamängder
+------------------------
+#### Bra för att testa stora datamängder
 
 ```json
 {
   "url": "https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml"
 }
 ```
-
+----------------------
 
 
 ## Testning
@@ -211,5 +213,5 @@ Content-Type: application/xml
     - Rate limiting
     - Input-validering
 
-Jag fått betydande hjälp av AI, särskilt gällande implementationen av Swagger/OpenAPI-dokumentation med 
-annotationer som `@Operation` och `@ApiResponse`. AI:n hjälpte till att strukturera API-dokumentationen på ett tydligt sätt.
+Jag fått mycket hjälp av AI vid implementationen av Swagger/OpenAPI-dokumentation med 
+annotationer som `@Operation` och `@ApiResponse`.
