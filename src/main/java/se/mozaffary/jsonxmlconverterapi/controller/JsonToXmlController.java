@@ -69,7 +69,7 @@ public class JsonToXmlController {
                     ))
             )
             JsonNode jsonNode) {
-        String xml = service.convertJsonToXml(jsonNode);
-        return ResponseEntity.ok(xml);
+        String json = service.convertJsonToXml(jsonNode);
+        return ResponseEntity.ok(json);
     }
 }

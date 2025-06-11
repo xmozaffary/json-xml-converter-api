@@ -12,35 +12,32 @@ Content-Type: application/json
 }
 
 
-### Json till xml - fel länk
+
+### Json till xml - skande  body(ska ge 400)
+POST http://localhost:8080/api/convert/fetch-json-to-xml
+Content-Type: application/json
+
+
+### Json till xml - fel json-struktur(ska ge 400)
 POST http://localhost:8080/api/convert/fetch-json-to-xml
 Content-Type: application/json
 
 {
-  "url": "https://jsonplaceholder.typicode"
-}
+  "url": "https://jsonplaceholder.typicode.com/users"
 
-
-### Json till xml - fel json-struktur
+### Json till xml - fel länk(kan ge 400)
 POST http://localhost:8080/api/convert/fetch-json-to-xml
 Content-Type: application/json
 
 {
-  "url": "https://www.w3schools.com/xml/note.xml"
-}
-
-### Json till xml - fel länk
-POST http://localhost:8080/api/convert/fetch-json-to-xml
-Content-Type: application/json
-
-{
-  "url": ""
+  "url": "htp://invalid-url"
 }
 
 
 #######################################################
-### XML till JSON - från json källa
+### XML till JSON - från xml källa
 #######################################################
+
 
 ### XML till JSON - från rätt länk
 POST http://localhost:8080/api/convert/fetch-xml-to-json
@@ -51,24 +48,29 @@ Content-Type: application/json
 }
 
 
-### XML till JSON - från fel länk
+### XML till JSON - skanade  body(ska ge 400)
+POST http://localhost:8080/api/convert/fetch-xml-to-json
+Content-Type: application/json
+
+
+### XML till JSON - fel json-struktur(ska ge 400)
 POST http://localhost:8080/api/convert/fetch-xml-to-json
 Content-Type: application/json
 
 {
   "url": "https://www.w3school"
-}
 
-### XML till JSON - fel xml-struktur
+
+### XML till JSON - fel xml-struktur(ska ge 400)
 POST http://localhost:8080/api/convert/fetch-xml-to-json
 Content-Type: application/json
 
 {
-  "url": "https://jsonplaceholder.typicode.com/users"
+  "url": "htp://invalid-url"
 }
 
 #######################################################
-### XML till JSON - direkt json
+### JSON till XMl - direkt json
 #######################################################
 
 ### JSON till XML - direkt json
@@ -91,15 +93,31 @@ Content-Type: application/json
   {"name": "Erik", "age":30}
 ]
 
-### JSON till XML - fel struktur
+### JSON till XML - fel JSON-struktur(ska ge 400)
 POST http://localhost:8080/api/convert/json-to-xml
 Content-Type: application/json
 
 {
   "name": "John Doe",
   "age": 30,
-  "city":
-}
+  "city": "Stockholm"
+
+
+### JSON till XML - Tom body (ska ge 400)
+POST http://localhost:8080/api/convert/json-to-xml
+Content-Type: application/json
+
+
+
+### JSON till XML - Felaktig content-type (skickar XML som JSON för att testa fel(ska ge 400))
+POST http://localhost:8080/api/convert/json-to-xml
+Content-Type: application/json
+
+<item>
+    <name>John Doe</name>
+    <age>30</age>
+    <city>Stockholm</city>
+</item>
 
 #######################################################
 ### XML till JSON - direkt xml
@@ -116,29 +134,31 @@ Content-Type: application/xml
 </item>
 
 
-### JSON till XML - fel xml-struktur
+### JSON till XML - fel xml-struktur(ska ge 422)
 POST http://localhost:8080/api/convert/xml-to-json
 Content-Type: application/xml
 
 <item>
     <name>John Doe</name>
     <age>30</age>
-    <city>Stockhol
-</item>
+    <city>Stockhol>
 
 
-### JSON till XML - direkt xml
+### JSON till XML - skanade body(ska ge 400)
 POST http://localhost:8080/api/convert/xml-to-json
 Content-Type: application/xml
 
-<items>
-    <item>
-        <name>John Doe</name>
-        <age>30</age>
-        <city>Stockholm</city>
-    </item>
-</items>
 
+
+### JSON till XML - Ogiltigt innehåll (JSON i stället för XML, för att testa felhantering, ska ge 422)
+POST http://localhost:8080/api/convert/xml-to-json
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "age": 30,
+  "city": "Stockholm"
+}
 
 
 ### JSON till XML - direkt xml

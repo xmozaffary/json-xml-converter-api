@@ -54,6 +54,7 @@ docker run -p 8080:8080 json-xml-converter-api
 
 ## API Dokumentation
 
+- Swagger är bara för dokumentation, för test ska man använda request.http
 - Swagger UI: http://localhost:8080/swagger-ui/index.html
 
 ## API Endpoints
@@ -137,7 +138,7 @@ Hämtar XML från en extern URL och konverterar det till JSON.
 **Response:** JSON-representation av den hämtade XML-datan.
 
 ------------------------
-#### Bra för att testa stora datamängder
+#### Bra för att testa stora xml datamängder
 
 ```json
 {
